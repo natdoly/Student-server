@@ -6,7 +6,9 @@ import jakarta.persistence.*;
 public class Student {
 
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
+    @SequenceGenerator(name = "sequenceGenerator", sequenceName = "student_seq")
+    private Integer id;
     private String name;
     private Integer age;
 
@@ -14,11 +16,11 @@ public class Student {
 
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
